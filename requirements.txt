@@ -1,0 +1,14 @@
+# IoT Inventory Detection Device - Dependencies
+# Install on Raspberry Pi 5 with: pip install -r requirements.txt
+
+# Firebase Admin SDK (Firestore + RTDB)
+firebase-admin>=6.2.0
+
+# HTTP requests for Gemini API
+requests>=2.31.0
+
+# RPi.GPIO is pre-installed on Raspberry Pi OS
+# RPi.GPIO>=0.7.1
+
+# picamera2 is pre-installed on Raspberry Pi OS
+# picamera2>=0.3.12
