@@ -143,6 +143,7 @@ def main():
         baseline, threshold = sensor.calibrate()
     except RuntimeError as e:
         logger.critical("Sensor calibration failed: %s", e)
+        heartbeat.signal_error()   # 3-blink error pattern on LED
         cleanup()
         sys.exit(1)
 
@@ -157,6 +158,7 @@ def main():
         detection_loop(threshold)
     except Exception:
         logger.exception("Unhandled error in detection loop")
+        heartbeat.signal_error()   # 3-blink error pattern on LED
     finally:
         cleanup()
 

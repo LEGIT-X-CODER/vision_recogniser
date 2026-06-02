@@ -24,10 +24,12 @@ import config
 logger = logging.getLogger("gemini_api")
 
 # Gemini REST endpoint
+# gemini_api.py line 28
 _GEMINI_URL = (
     "https://generativelanguage.googleapis.com/v1beta/models/"
     f"{config.GEMINI_MODEL}:generateContent"
 )
+
 
 
 def analyse_image(image_path: str) -> list[dict[str, Any]]:
@@ -169,3 +171,7 @@ def _parse_response(response_json: dict) -> list[dict[str, Any]]:
 
     logger.info("Gemini detected %d product(s)", len(validated))
     return validated
+
+
+# Alias for American spelling compatibility
+analyze_image = analyse_image

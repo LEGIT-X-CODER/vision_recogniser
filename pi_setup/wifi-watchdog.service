@@ -1,0 +1,20 @@
+[Unit]
+Description=WiFi Watchdog – keeps wlan0 alive and reconnects on dropout
+# network-online.target = network is actually UP (not just stack loaded)
+# This prevents the watchdog from starting before WiFi is connected
+# and triggering a pointless restart loop on boot.
+After=network-online.target wpa_supplicant.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/wifi_watchdog.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+# Run as root so we can control the interface
+User=root
+
+[Install]
+WantedBy=multi-user.target

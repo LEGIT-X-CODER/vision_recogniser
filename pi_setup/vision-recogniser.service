@@ -1,0 +1,31 @@
+[Unit]
+Description=Vision Recogniser – IoT Inventory Detection
+# Wait for network AND wifi-watchdog to be up before starting
+After=network-online.target wifi-watchdog.service
+Wants=network-online.target
+Requires=wifi-watchdog.service
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/vision_recogniser
+
+# Use the venv python created by setup_pi.sh
+ExecStart=/home/pi/vision_recogniser/venv/bin/python3 main.py
+
+# Restart automatically if it crashes
+Restart=always
+RestartSec=10
+
+# Log stdout/stderr to journald
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=vision-recogniser
+
+# GPIO needs these env vars on Pi OS Lite
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/home/pi/vision_recogniser
+
+[Install]
+WantedBy=multi-user.target

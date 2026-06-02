@@ -43,8 +43,9 @@ QUEUE_PERSIST_PATH = os.path.join(BASE_DIR, "image_buffer", ".queue_state.json")
 # ──────────────────────────────────────────────────────────────────────
 # Gemini API
 # ──────────────────────────────────────────────────────────────────────
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "YOUR_GEMINI_API_KEY")
-GEMINI_MODEL = "gemini-1.5-flash"
+GEMINI_API_KEY = "AIzaSyD_XiQHCwyQYBiYZWGFrtOYfMYFkvU4AHE"
+# config.py line 47
+GEMINI_MODEL = "gemini-2.0-flash"
 
 GEMINI_PROMPT = """Analyze this image and detect all products present.
 
@@ -79,7 +80,7 @@ Important:
 # Firebase
 # ──────────────────────────────────────────────────────────────────────
 FIRESTORE_COLLECTION = "inventory_logs"
-RTDB_URL = "https://raspi-iot-bd60b-default-rtdb.asia-southeast1.firebasedatabase.app/"
+RTDB_URL = "https://grochenn-7662b-default-rtdb.asia-southeast1.firebasedatabase.app/"
 DEVICE_ID = "device_001"
 
 # ──────────────────────────────────────────────────────────────────────
